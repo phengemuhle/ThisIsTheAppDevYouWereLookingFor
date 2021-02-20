@@ -5,8 +5,8 @@ import GOLBAL from "../../assets/Globals";
 const LoadingScreen = () => {
   return (
     <ImageBackground
-      source={GOLBAL.BACKGROUND_IMAGE_SOURCE}
-      style={GOLBAL.BACKGROUND_IMAGE_STYLE}
+      source={GOLBAL.BACKGROUND_SOURCE}
+      style={GOLBAL.BACKGROUND_STYLE}
     >
       <View style={styles.loadingContainer}>
         <Text
@@ -20,9 +20,7 @@ const LoadingScreen = () => {
         </Text>
         <Image
           style={styles.image}
-          source={{
-            uri: "https://media2.giphy.com/media/YnGAt5S2TYrqXhUJlb/source.gif",
-          }}
+          source={GOLBAL.DOGGO_SOURCE}
         />
       </View>
     </ImageBackground>

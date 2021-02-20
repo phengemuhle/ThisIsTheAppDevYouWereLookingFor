@@ -1,23 +1,28 @@
-import React, { Component, useEffect, useState } from "react";
-import { AppRegistry } from "react-native";
-import * as Font from "expo-font";
+import React from "react";
+import {
+  useFonts,
+  Muli_300Light,
+  Muli_400Regular,
+  Muli_500Medium,
+  Muli_600SemiBold,
+  Muli_700Bold,
+} from "@expo-google-fonts/muli";
 
-import LoadingScreen from "./components/screens/LoadingScreen";
+import AppLoading from "expo-app-loading";
+import NavigationScreen from "./components/screens/NavigationScreen";
 
-const App = (props) => {
-  const [isLoading, setIsLooading] = useState(false);
-  useEffect(async () => {
-    await Font.loadAsync({
-      "Montserrat-SemiBold": require("./assets/fonts/Montserrat-SemiBold.ttf"),
-      "Montserrat-Bold": require("./assets/fonts/Montserrat-Bold.ttf"),
-      "Montserrat-ExtraBold": require("./assets/fonts/Montserrat-ExtraBold.ttf"),
-      "Montserrat-Light": require("./assets/fonts/Montserrat-Light.ttf"),
-      "Montserrat-Regular": require("./assets/fonts/Montserrat-Regular.ttf"),
-    });
-    setIsLooading(true);
-  }, []);
+const App = () => {
+  const [loaded] = useFonts({
+    Muli_300Light,
+    Muli_400Regular,
+    Muli_500Medium,
+    Muli_600SemiBold,
+    Muli_700Bold,
+  });
 
-  return <>{isLoading ? null : <LoadingScreen />}</>;
+  if (!loaded) {
+    return <AppLoading/>;
+  }
+  return <NavigationScreen />;
 };
-// AppRegistry.registerComponent("ThisIsTheAppYouAreLookingFor", () => App);
 export default App;
