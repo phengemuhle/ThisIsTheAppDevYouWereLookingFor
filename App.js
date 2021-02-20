@@ -1,21 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component, useEffect, useState } from "react";
+import { AppRegistry } from "react-native";
+import * as Font from "expo-font";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+import LoadingScreen from "./components/screens/LoadingScreen";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const App = (props) => {
+  const [isLoading, setIsLooading] = useState(false);
+  useEffect(async () => {
+    await Font.loadAsync({
+      "Montserrat-SemiBold": require("./assets/fonts/Montserrat-SemiBold.ttf"),
+      "Montserrat-Bold": require("./assets/fonts/Montserrat-Bold.ttf"),
+      "Montserrat-ExtraBold": require("./assets/fonts/Montserrat-ExtraBold.ttf"),
+      "Montserrat-Light": require("./assets/fonts/Montserrat-Light.ttf"),
+      "Montserrat-Regular": require("./assets/fonts/Montserrat-Regular.ttf"),
+    });
+    setIsLooading(true);
+  }, []);
+
+  return <>{isLoading ? null : <LoadingScreen />}</>;
+};
+// AppRegistry.registerComponent("ThisIsTheAppYouAreLookingFor", () => App);
+export default App;
