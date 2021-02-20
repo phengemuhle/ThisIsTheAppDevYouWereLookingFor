@@ -1,21 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import {
+  useFonts,
+  Muli_300Light,
+  Muli_400Regular,
+  Muli_500Medium,
+  Muli_600SemiBold,
+  Muli_700Bold,
+} from "@expo-google-fonts/muli";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+import AppLoading from "expo-app-loading";
+import NavigationScreen from "./components/screens/NavigationScreen";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const App = () => {
+  const [loaded] = useFonts({
+    Muli_300Light,
+    Muli_400Regular,
+    Muli_500Medium,
+    Muli_600SemiBold,
+    Muli_700Bold,
+  });
+
+  if (!loaded) {
+    return <AppLoading/>;
+  }
+  return <NavigationScreen />;
+};
+export default App;
