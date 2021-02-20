@@ -2,7 +2,6 @@ module.exports = {
   BLACK: "#000000",
   WHITE: "#FFFFFF",
   LIGHT_BLUE: "#41baf2",
-  GREY_OPACITY: "rgba(109, 114, 120, 0.5)",
 
   SET_COLOR: {
     _BLACK: { color: "#000000" },

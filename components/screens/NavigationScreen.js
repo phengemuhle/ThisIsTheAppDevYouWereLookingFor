@@ -6,7 +6,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Icon from "react-native-vector-icons/Ionicons";
 
 import HomeScreen from "./HomeScreen";
-import NavHeader from "../shared/NavHeader";
 
 const Drawer = createDrawerNavigator();
 const HomeStack = createStackNavigator();
@@ -42,19 +41,7 @@ export default () => {
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name="Home" component={HomeStackNavigation} />
-        {/* <Drawer.Screen name="Notifications" component={NotificationsScreen} /> */}
       </Drawer.Navigator>
     </NavigationContainer>
-
-    // <Stack.Screen
-    //   name="Home"
-    //   component={HomeScreen}
-    //   options={({ navigation }) => ({
-    //     title: "Awesome app",
-    //     headerLeft: () => (
-    //       <DrawerButton onPress={() => navigation.toggleDrawer()} />
-    //     ),
-    //   })}
-    // />
   );
 };

@@ -1,5 +1,11 @@
 import React from "react";
-import { View, Text, ImageBackground, Dimensions, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  ImageBackground,
+  Dimensions,
+  StyleSheet,
+} from "react-native";
 
 import Header from "../shared/Header";
 import GLOBAL from "../../assets/Globals";
@@ -7,7 +13,7 @@ import GLOBAL from "../../assets/Globals";
 const HomeScreen = () => {
   return (
     <ImageBackground
-      //   source={GOLBAL.BACKGROUND_SOURCE}
+      source={GOLBAL.BACKGROUND_SOURCE}
       style={GLOBAL.BACKGROUND_STYLE}
     >
       <View style={styles.mainCont}>
@@ -20,8 +26,8 @@ const HomeScreen = () => {
 
 const styles = StyleSheet.create({
   mainCont: {
-    height: Dimensions.get('window').height,
-    width: Dimensions.get('window').width,
+    height: Dimensions.get("window").height,
+    width: Dimensions.get("window").width,
     justifyContent: "center",
     alignItems: "center",
   },
