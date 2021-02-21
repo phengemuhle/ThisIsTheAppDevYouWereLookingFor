@@ -7,18 +7,18 @@ import {
   StyleSheet,
 } from "react-native";
 
-import Header from "../shared/Header";
-import GLOBAL from "../../assets/Globals";
+import Header from "@components/shared/Header";
+import {BACKGROUND_SOURCE, BACKGROUND_STYLE, TEXT, SET_COLOR} from "@assets/Globals";
 
 const HomeScreen = () => {
   return (
     <ImageBackground
-      source={GOLBAL.BACKGROUND_SOURCE}
-      style={GLOBAL.BACKGROUND_STYLE}
+      source={BACKGROUND_SOURCE}
+      style={BACKGROUND_STYLE}
     >
       <View style={styles.mainCont}>
         <Header />
-        <Text> Home Screen</Text>
+        <Text style={{...TEXT.BOLD, ...SET_COLOR._WHITE}}> Home Screen</Text>
       </View>
     </ImageBackground>
   );
