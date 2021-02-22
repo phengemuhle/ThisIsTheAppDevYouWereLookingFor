@@ -118,6 +118,7 @@ const styles = StyleSheet.create({
   },
   buttonOne: {
     justifyContent: "center",
+    alignContent:"center",
     backgroundColor: RED,
     borderRadius: 20,
     borderColor: BLACK,

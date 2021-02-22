@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   useFonts,
   Muli_300Light,
@@ -6,10 +6,10 @@ import {
   Muli_500Medium,
   Muli_600SemiBold,
   Muli_700Bold,
-} from "@expo-google-fonts/muli";
+} from '@expo-google-fonts/muli';
 
-import AppLoading from "expo-app-loading";
-import WelcomeScreen from "./components/screens/welcome/WelcomeScreen";
+import AppLoading from 'expo-app-loading';
+import ChoiceScreen from './components/screens/welcome/ChoiceScreen';
 
 const App = () => {
   const [loaded] = useFonts({
@@ -23,6 +23,6 @@ const App = () => {
   if (!loaded) {
     return <AppLoading/>;
   }
-  return <WelcomeScreen />;
+  return <ChoiceScreen />;
 };
 export default App;
