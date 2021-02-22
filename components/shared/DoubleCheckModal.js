@@ -28,8 +28,8 @@ const DoubleCheckModal = (props) => {
     isVisible,
     headerMessge,
     subMessage,
-    yesValue,
-    noValue,
+    buttonOneValue,
+    buttonTwoValue,
   } = props;
 
   return (
@@ -55,23 +55,27 @@ const DoubleCheckModal = (props) => {
                 flexDirection: "row",
                 justifyContent: "space-around",
                 width: Dimensions.get("window").width * 0.9,
-                height: Dimensions.get("window").height / 12,
+                height: Dimensions.get("window").height / 14,
               }}
             >
               <View style={styles.buttonCont}>
                 <TouchableHighlight
-                  style={styles.noButton}
+                  style={styles.buttonOne}
                   onPress={firstFunction}
                 >
-                  <Text style={styles.noTextStyle}>{noValue}</Text>
+                  <Text style={styles.buttonOneTextStyle}>
+                    {buttonOneValue}
+                  </Text>
                 </TouchableHighlight>
               </View>
               <View style={styles.buttonCont}>
                 <TouchableHighlight
-                  style={styles.yesButton}
+                  style={styles.buttonTwo}
                   onPress={secondFunction}
                 >
-                  <Text style={styles.yesTextStyle}>{yesValue}</Text>
+                  <Text style={styles.buttonTwoTextStyle}>
+                    {buttonTwoValue}
+                  </Text>
                 </TouchableHighlight>
               </View>
             </View>
@@ -97,11 +101,10 @@ const styles = StyleSheet.create({
   modalView: {
     backgroundColor: LIGHT_BLUE,
     borderRadius: 20,
-    width: "100%",
-    flex: 1,
+    width: "95%",
     borderColor: RED,
     borderWidth: 3,
-    padding: Dimensions.get("window").width / 15,
+    padding: Dimensions.get("window").width / 30,
     alignItems: "center",
     justifyContent: "center",
     shadowColor: BLACK,
@@ -113,35 +116,35 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
-  yesButton: {
+  buttonOne: {
     justifyContent: "center",
     backgroundColor: RED,
     borderRadius: 20,
     borderColor: BLACK,
     borderWidth: 1,
-    width: "45%",
+    width: "47%",
     height: "100%",
-    margin: "3%",
+    // margin: "3%",
     elevation: 2,
   },
-  yesTextStyle: {
+  buttonOneTextStyle: {
     ...TEXT.SMALLSEMIBOLD,
     textAlign: "center",
-    ...SET_COLOR._WHITE,
+    ...SET_COLOR.BLACK,
   },
-  noButton: {
+  buttonTwo: {
     justifyContent: "center",
     backgroundColor: GREEN,
     borderRadius: 20,
     borderColor: BLACK,
     borderWidth: 1,
-    width: "45%",
+    width: "47%",
     height: "100%",
 
-    margin: "3%",
+    // margin: "3%",
     elevation: 2,
   },
-  noTextStyle: {
+  buttonTwoTextStyle: {
     ...TEXT.SMALLSEMIBOLD,
     ...SET_COLOR._BLACK,
     textAlign: "center",
@@ -156,13 +159,13 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   image: {
-    height: "30%",
-    width: "90%",
+    height: "50%",
+    width: "100%",
     borderColor: YELLOW,
     overflow: "hidden",
     borderWidth: 3,
     borderRadius: 10,
-    marginTop: "4%",
+    marginTop: "8%",
   },
 });
 

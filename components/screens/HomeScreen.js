@@ -8,19 +8,17 @@ import {
 } from "react-native";
 
 import Header from "@components/shared/Header";
-import {BACKGROUND_SOURCE, BACKGROUND_STYLE, TEXT, SET_COLOR} from "@assets/Globals";
+
+import { MAIN_APP_STYLE, TEXT, SET_COLOR, PROFILE_PIC } from "@assets/Globals";
 
 const HomeScreen = () => {
   return (
-    <ImageBackground
-      source={BACKGROUND_SOURCE}
-      style={BACKGROUND_STYLE}
-    >
+    <View style={MAIN_APP_STYLE}>
       <View style={styles.mainCont}>
-        <Header />
-        <Text style={{...TEXT.BOLD, ...SET_COLOR._WHITE}}> Home Screen</Text>
+        <Header firstName="Phillip" lastName="Hengemuhle" image={PROFILE_PIC} />
+        <Text style={{ ...TEXT.BOLD, ...SET_COLOR._WHITE }}> Home Screen</Text>
       </View>
-    </ImageBackground>
+    </View>
   );
 };
 
@@ -28,8 +26,6 @@ const styles = StyleSheet.create({
   mainCont: {
     height: Dimensions.get("window").height,
     width: Dimensions.get("window").width,
-    justifyContent: "center",
-    alignItems: "center",
   },
 });
 

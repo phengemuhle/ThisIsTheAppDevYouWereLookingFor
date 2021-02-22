@@ -6,7 +6,6 @@ const WelcomeScreen = () => {
   const [goHome, setGoHome] = useState(false);
 
   const sendHome = () => {
-    console.log("going Home");
     setGoHome(!goHome);
   };
   return (

@@ -24,10 +24,10 @@ const AreYouSureModal = (props) => {
     isVisible,
     headerMessge,
     subMessage,
-    yesValue,
-    noValue,
+    buttonOneValue,
+    buttonTwoValue,
   } = props;
-
+  console.log(secondFunction);
   return (
     <View style={styles.centeredView}>
       <Modal
@@ -53,13 +53,13 @@ const AreYouSureModal = (props) => {
                 style={styles.noButton}
                 onPress={firstFunction}
               >
-                <Text style={styles.noTextStyle}>{noValue}</Text>
+                <Text style={styles.buttonTwo}>{buttonTwoValue}</Text>
               </TouchableHighlight>
               <TouchableHighlight
                 style={styles.yesButton}
                 onPress={secondFunction}
               >
-                <Text style={styles.yesTextStyle}>{yesValue}</Text>
+                <Text style={styles.buttonOne}>{buttonOneValue}</Text>
               </TouchableHighlight>
             </View>
           </View>
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     margin: "3%",
     elevation: 2,
   },
-  yesTextStyle: {
+  buttonOne: {
     ...TEXT.SMALLSEMIBOLD,
     textAlign: "center",
     ...SET_COLOR._WHITE,
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     margin: "3%",
     elevation: 2,
   },
-  noTextStyle: {
+  buttonTwo: {
     ...TEXT.SMALLSEMIBOLD,
     ...SET_COLOR._BLACK,
     textAlign: "center",

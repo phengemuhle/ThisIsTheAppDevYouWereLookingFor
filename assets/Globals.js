@@ -20,7 +20,8 @@ module.exports = {
   },
 
   BACKGROUND_SOURCE: require("./images/purpleBack.jpg"),
-
+  MAIN_APP_STYLE: { backgroundColor: "#dcdfe0", flex: 1 },
+  PROFILE_PIC: require("./images/ProfilePic.png"),
   DOGGO_SOURCE: {
     uri: "https://media2.giphy.com/media/YnGAt5S2TYrqXhUJlb/source.gif",
   },

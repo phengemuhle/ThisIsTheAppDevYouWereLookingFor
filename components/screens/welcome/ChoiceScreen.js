@@ -22,19 +22,13 @@ const ChoiceScreen = (props) => {
   const { sendHome } = props;
   const [doubleCheck, setDoubleCheck] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
-  useEffect(() => {
-    return;
-  }, [modalVisible, doubleCheck]);
-    
+
   const changeModalVisibility = () => {
     setModalVisible(!modalVisible);
   };
-
-  const changeDoubleCheck = () => {
-    console.log(doubleCheck);
-    console.log("pressed");
-    setDoubleCheck(!doubleCheck);
-    console.log(doubleCheck);
+  const mistakeCheck = () => {
+    setModalVisible(!modalVisible);
+    setDoubleCheck(true);
   };
 
   return (
@@ -52,36 +46,29 @@ const ChoiceScreen = (props) => {
           </Text>
         </View>
         <View style={styles.buttonCont}>
-          <TouchableOpacity
-            style={styles.noButton}
-            onPress={changeModalVisibility}
-          >
-            <Text style={{ ...TEXT.SEMIBOLD }}>No</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.yesButton} onPress={sendHome}>
+          {doubleCheck ? null : (
+            <TouchableOpacity
+              style={styles.buttoneTwo}
+              onPress={changeModalVisibility}
+            >
+              <Text style={{ ...TEXT.SEMIBOLD }}>No</Text>
+            </TouchableOpacity>
+          )}
+          <TouchableOpacity style={styles.buttonOne} onPress={sendHome}>
             <Text style={{ ...TEXT.SEMIBOLD }}>Yes</Text>
           </TouchableOpacity>
         </View>
       </View>
-      <AreYouSureModal
-        isVisible={modalVisible}
-        yesValue={"I'm not ready"}
-        noValue={"Let's try again!"}
-        headerMessge={"Are you sure?"}
-        subMessage={"Think of butterfly effect of your decision..."}
-        firstFunction={changeModalVisibility}
-        secondFunction={changeDoubleCheck}
-      />
       <DoubleCheckModal
-        isVisible={doubleCheck}
-        yesValue={"Bummer"}
-        noValue={"I now see my error!"}
+        isVisible={modalVisible}
+        buttonOneValue={"I need more time"}
+        buttonTwoValue={"I see my error!"}
         headerMessge={"Are you sure?"}
         subMessage={
           "Please Enjoy this adorable doggo while rethinking your decision."
         }
-        firstFunction={changeDoubleCheck}
-        secondFunction={changeDoubleCheck}
+        firstFunction={changeModalVisibility}
+        secondFunction={mistakeCheck}
       />
     </ImageBackground>
   );
@@ -101,7 +88,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-around",
   },
-  noButton: {
+  buttoneTwo: {
     width: "40%",
     padding: "1%",
     borderRadius: 20,
@@ -110,7 +97,7 @@ const styles = StyleSheet.create({
     backgroundColor: RED,
     ...SET_COLOR.RED,
   },
-  yesButton: {
+  buttonOne: {
     width: "40%",
     padding: "1%",
     borderRadius: 20,
