@@ -6,16 +6,28 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Icon from "react-native-vector-icons/Ionicons";
 
 import HomeScreen from "./HomeScreen";
+import ChoiceScreen from "./welcome/ChoiceScreen";
 
 const Drawer = createDrawerNavigator();
 const HomeStack = createStackNavigator();
+const LogOutStack = createStackNavigator();
 
-function HomeStackNavigation({navigation}) {
+function LogOutStackNavigation({ navigation }) {
+  return (
+    <LogOutStack.Navigator
+      initialRouteName="Log Out"
+      screenOptions={{ headerShown: false }}
+    >
+      <LogOutStack.Screen name="Log Out" component={ChoiceScreen} />
+    </LogOutStack.Navigator>
+  );
+}
+function HomeStackNavigation({ navigation }) {
   return (
     <HomeStack.Navigator
-      initialRouteName="Home"
+      initialRouteName="Dev Profile"
       screenOptions={{
-        headerTitle: "Home",
+        headerTitle: "Dev Profile",
         headerTitleStyle: {
           textAlign: "center",
           justifyContent: "center",
@@ -31,17 +43,24 @@ function HomeStackNavigation({navigation}) {
         headerRight: () => <View style={{ paddingRight: 10 }}></View>,
       }}
     >
-      <HomeStack.Screen name="Home" component={HomeScreen} />
+      <HomeStack.Screen name="Dev Profile" component={HomeScreen} />
     </HomeStack.Navigator>
   );
 }
 
 export default () => {
   return (
-    <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home">
-        <Drawer.Screen name="Home" component={HomeStackNavigation} />
-      </Drawer.Navigator>
-    </NavigationContainer>
+    <>
+      <NavigationContainer>
+        <Drawer.Navigator initialRouteName="Dev Profile">
+          <Drawer.Screen name="Dev Profile" component={HomeStackNavigation} />
+          <Drawer.Screen name="About" component={HomeStackNavigation} />
+          <Drawer.Screen name="Projects" component={HomeStackNavigation} />
+          <Drawer.Screen name="Resume" component={HomeStackNavigation} />
+          <Drawer.Screen name="Panzer" component={HomeStackNavigation} />
+          <Drawer.Screen name="Log Out" component={LogOutStackNavigation} />
+        </Drawer.Navigator>
+      </NavigationContainer>
+    </>
   );
 };

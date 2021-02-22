@@ -9,7 +9,7 @@ import {
 } from "@expo-google-fonts/muli";
 
 import AppLoading from "expo-app-loading";
-import NavigationScreen from "./components/screens/NavigationScreen";
+import WelcomeScreen from "./components/screens/welcome/WelcomeScreen";
 
 const App = () => {
   const [loaded] = useFonts({
@@ -23,6 +23,6 @@ const App = () => {
   if (!loaded) {
     return <AppLoading/>;
   }
-  return <NavigationScreen />;
+  return <WelcomeScreen />;
 };
 export default App;
