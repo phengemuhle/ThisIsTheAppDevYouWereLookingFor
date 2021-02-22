@@ -8,6 +8,7 @@ module.exports = {
   DARK_GRAY: "#6e706e",
   BLACK: "#0f0f0f",
   YELLOW: "#f7f431",
+  SEAFOAM: "#edf0ff",
 
   SET_COLOR: {
     _BLACK: { color: "#0f0f0f" },
@@ -22,6 +23,7 @@ module.exports = {
   BACKGROUND_SOURCE: require("./images/purpleBack.jpg"),
   MAIN_APP_STYLE: { backgroundColor: "#dcdfe0", flex: 1 },
   PROFILE_PIC: require("./images/ProfilePic.png"),
+  PANZER_PIC: require("./images/PanzProfile2.png"),
   DOGGO_SOURCE: {
     uri: "https://media2.giphy.com/media/YnGAt5S2TYrqXhUJlb/source.gif",
   },
@@ -42,7 +44,7 @@ module.exports = {
       fontFamily: "Muli_600SemiBold",
     },
     MEDIUM: {
-      fontSize: 15,
+      fontSize: 18,
       fontFamily: "Muli_500Medium",
     },
     REGULAR: {

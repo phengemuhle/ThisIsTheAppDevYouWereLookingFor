@@ -15,14 +15,15 @@ import {
   RED,
   GREEN,
 } from "@assets/Globals";
-import AreYouSureModal from "@components/shared/AreYouSureModal";
+import NavigationScreen from "@components/screens/NavigationScreen";
 import DoubleCheckModal from "@components/shared/DoubleCheckModal";
 
-const ChoiceScreen = (props) => {
-  const { sendHome } = props;
+const ChoiceScreen = () => {
+  const [sendHome, setSendHome] = useState(false);
   const [doubleCheck, setDoubleCheck] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
-
+  useEffect(() => {
+  }, [doubleCheck, modalVisible, sendHome]);
   const changeModalVisibility = () => {
     setModalVisible(!modalVisible);
   };
@@ -32,45 +33,63 @@ const ChoiceScreen = (props) => {
   };
 
   return (
-    <ImageBackground source={BACKGROUND_SOURCE} style={BACKGROUND_STYLE}>
-      <View style={styles.mainCont}>
-        <View style={{ height: "20%", justifyContent: "center" }}>
-          <Text
-            style={{
-              ...TEXT.SEMIBOLD,
-              ...SET_COLOR._WHITE,
-              textAlign: "center",
-            }}
-          >
-            Are you ready to meet your next team member?
-          </Text>
-        </View>
-        <View style={styles.buttonCont}>
-          {doubleCheck ? null : (
-            <TouchableOpacity
-              style={styles.buttoneTwo}
-              onPress={changeModalVisibility}
-            >
-              <Text style={{ ...TEXT.SEMIBOLD }}>No</Text>
-            </TouchableOpacity>
-          )}
-          <TouchableOpacity style={styles.buttonOne} onPress={sendHome}>
-            <Text style={{ ...TEXT.SEMIBOLD }}>Yes</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-      <DoubleCheckModal
-        isVisible={modalVisible}
-        buttonOneValue={"I need more time"}
-        buttonTwoValue={"I see my error!"}
-        headerMessge={"Are you sure?"}
-        subMessage={
-          "Please Enjoy this adorable doggo while rethinking your decision."
-        }
-        firstFunction={changeModalVisibility}
-        secondFunction={mistakeCheck}
-      />
-    </ImageBackground>
+    <>
+      {sendHome ? (
+        <NavigationScreen />
+      ) : (
+        <ImageBackground source={BACKGROUND_SOURCE} style={BACKGROUND_STYLE}>
+          <View style={styles.mainCont}>
+            <View style={{ height: "20%", justifyContent: "center" }}>
+              <Text
+                style={{
+                  ...TEXT.SEMIBOLD,
+                  ...SET_COLOR._WHITE,
+                  textAlign: "center",
+                }}
+              >
+                Are you ready to meet your next team members?
+              </Text>
+              <Text
+                style={{
+                  ...TEXT.SMALLSEMIBOLD,
+                  ...SET_COLOR._WHITE,
+                  textAlign: "center",
+                }}
+              >
+                We come as a pair!
+              </Text>
+            </View>
+            <View style={styles.buttonCont}>
+              {doubleCheck ? null : (
+                <TouchableOpacity
+                  style={styles.buttoneTwo}
+                  onPress={changeModalVisibility}
+                >
+                  <Text style={{ ...TEXT.SEMIBOLD }}>No</Text>
+                </TouchableOpacity>
+              )}
+              <TouchableOpacity
+                style={styles.buttonOne}
+                onPress={() => setSendHome(!sendHome)}
+              >
+                <Text style={{ ...TEXT.SEMIBOLD }}>Yes</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <DoubleCheckModal
+            isVisible={modalVisible}
+            buttonOneValue={"I'm confused"}
+            buttonTwoValue={"I see my error!"}
+            headerMessge={"Are you sure?"}
+            subMessage={
+              "Please Enjoy this adorable doggo while rethinking your decision."
+            }
+            firstFunction={changeModalVisibility}
+            secondFunction={mistakeCheck}
+          />
+        </ImageBackground>
+      )}
+    </>
   );
 };
 
